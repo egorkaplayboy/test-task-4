@@ -1,0 +1,14 @@
+* {
+  // Обнуление базовых стилей
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #0e0f0f;
+  /* background-color: #141515; */
+  color: #fff;
+}
+
+.container {
+  max-width: 768px;
+  margin: 0 auto;
+}
