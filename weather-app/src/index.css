@@ -1,10 +1,16 @@
-body {
-  // Обнуление базовых стилей
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+* {
+  /* Обнуление базовых стилей */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
   background-color: #0e0f0f;
   color: #fff;
+  font-family: "Open Sans", sans-serif;
 }
 
 .container {
@@ -14,7 +20,7 @@ body {
 
 .wrapper {
   background-color: #141515;
-  padding: 20px;
+  padding: 40px;
   height: 90vh;
   border-radius: 10px;
 }
@@ -38,4 +44,35 @@ body {
   border: none;
   padding: 10px 30px;
   border-radius: 10px;
+}
+
+.weather {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.weather__title {
+  text-align: center;
+  font-weight: bold;
+}
+.weather__data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+.weather__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.weather__main img {
+  width: 80px;
+  height: 80px;
+}
+.weather__info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
