@@ -1,14 +1,41 @@
-* {
+body {
   // Обнуление базовых стилей
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background-color: #0e0f0f;
-  /* background-color: #141515; */
   color: #fff;
 }
 
 .container {
   max-width: 768px;
-  margin: 0 auto;
+  margin: 20px auto;
+}
+
+.wrapper {
+  background-color: #141515;
+  padding: 20px;
+  height: 90vh;
+  border-radius: 10px;
+}
+.wrapper__form {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+.wrapper__form input {
+  outline: none;
+  border: none;
+  padding: 15px 10px;
+  background-color: #0e0f0f;
+  width: 70%;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 10px;
+}
+.wrapper__form button {
+  background-color: #7551ff;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 10px;
 }
