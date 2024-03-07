@@ -27,10 +27,42 @@ const createTables = async (pool) => {
     console.error("Error creating tables:", err);
   } finally {
     client.release();
-    await pool.end();
+  }
+};
+
+// Присваивание данных к таблицам
+
+const populateTables = async (pool) => {
+  const client = await pool.connect();
+  try {
+    await client.query("INSERT INTO cars (model) VALUES ('Toyota')");
+    await client.query("INSERT INTO cars (model) VALUES ('Honda')");
+    await client.query("INSERT INTO cars (model) VALUES ('Ford')");
+
+    await client.query("INSERT INTO owners (name) VALUES ('John Doe')");
+    await client.query("INSERT INTO owners (name) VALUES ('Jane Smith')");
+
+    const carId1 = 1;
+    const ownerId1 = 1;
+    await client.query(
+      `INSERT INTO ownership (car_id, owner_id, purchase_date) VALUES (${carId1}, ${ownerId1}, '2022-01-01')`
+    );
+
+    const carId2 = 2;
+    const ownerId2 = 2;
+    await client.query(
+      `INSERT INTO ownership (car_id, owner_id, purchase_date) VALUES (${carId2}, ${ownerId2}, '2022-02-15')`
+    );
+
+    console.log("Data inserted into tables successfully.");
+  } catch (err) {
+    console.error("Error inserting data into tables:", err);
+  } finally {
+    client.release();
   }
 };
 
 module.exports = {
   createTables,
+  populateTables,
 };
