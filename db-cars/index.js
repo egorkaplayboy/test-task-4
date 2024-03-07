@@ -1,6 +1,14 @@
 require("dotenv").config();
 const { Pool } = require("pg");
+const express = require("express");
 const { createTables, populateTables } = require("./src/dbSetup");
+const carsRoutes = require("./src/routes/cars");
+const ownerRoutes = require("./src/routes/owner");
+const ownershipRoutes = require("./src/routes/ownership");
+const allRoutes = require("./src/routes/all");
+
+const app = express();
+const PORT = 4000 | process.env.SERVER_PORT;
 
 const pool = new Pool({
   host: process.env.DB_HOST,
@@ -18,8 +26,15 @@ const setupDatabase = async () => {
   await populateTables(pool).catch((err) =>
     console.error("Error in populateTables function:", err)
   );
-
-  await pool.end(); // Вызываем pool.end() здесь после завершения всех операций
 };
 
 setupDatabase();
+
+app.use("/api", allRoutes(pool));
+app.use("/api/cars", carsRoutes(pool));
+app.use("/api/owner", ownerRoutes(pool));
+app.use("/api/ownership", ownershipRoutes(pool));
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
